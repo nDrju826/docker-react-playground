@@ -1,0 +1,11 @@
+require: sudo
+services:
+  - docker
+
+# actions before running tests / deployng app
+before_install:
+  - docker build -t drju82/docker-react-playground -f Dockerfile.dev .
+
+# actions to run tests / deploy app
+script:
+  - docker run drju82/docker-react-playground npm run test -- --coverage
